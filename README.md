@@ -121,3 +121,9 @@ In SQL, data types define the kind of data that can be stored in a column or var
     <td>YEAR</td>
  
 </table>
+
+<h3>*Note -</h3> CHAR is for fixed length & VARCHAR is for variable length strings. Generally,
+VARCHAR is better as it only occupies necessary memory & works more efficiently.<br>
+We can also use UNSIGNED with datatypes when we only have positive values to add.
+Eg - UNSIGNED INT
+
