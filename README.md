@@ -127,3 +127,33 @@ VARCHAR is better as it only occupies necessary memory & works more efficiently.
 We can also use UNSIGNED with datatypes when we only have positive values to add.
 Eg - UNSIGNED INT
 
+
+<h1>TypesofSQLCommands:
+</h1>
+1. DQL(Data Query Language) : Used to retrieve data from databases. (SELECT)<br>
+ 2. DDL(Data Definition Language) : Used to create, alter, and delete database objects
+ like tables, indexes, etc. (CREATE, DROP, ALTER, RENAME, TRUNCATE)<br>
+ 3. DML(Data Manipulation Language): Used to modify the database. (INSERT,
+ UPDATE, DELETE)<br>
+ 4. DCL(Data Control Language): Used to grant & revoke permissions. (GRANT,
+ REVOKE)<br>
+ 5. TCL(Transaction Control Language): Used to manage transactions. (COMMIT,
+ ROLLBACK, START TRANSACTIONS, SAVEPOINT)<br>
+
+
+ <h2>1. Data Definition Language (DDL)</h2>
+  Data Definition Language (DDL) is a subset of SQL (Structured Query Language)
+ responsible for defining and managing the structure of databases and their objects.
+ DDL commands enable you to create, modify, and delete database objects like tables,
+ indexes, constraints, and more.<br>
+  Key DDL Commands are:
+
+<h3> ● CREATE TABLE:</h3>
+ <ul>
+   ○ Usedtocreate a new table in the database.<br>
+ ○ Specifies the table name, column names, data types, constraints, and more.<br>
+ ○ Example:CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
+ salary DECIMAL(10, 2));
+
+
+ 
