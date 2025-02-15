@@ -155,5 +155,41 @@ Eg - UNSIGNED INT
  ○ Example:CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
  salary DECIMAL(10, 2));
 
+ <h3> ● ALTERTABLE:</h3>
+  ○ Usedtomodify the structure of an existing table.<br>
+ ○ Youcanadd, modify, or drop columns, constraints, and more.<br>
+ ○ Example: ALTER TABLE employees ADD COLUMN email VARCHAR(100);<br>
+
+ <h3>● DROPTABLE:</h3>
+ ○ Usedtodelete an existing table along with its data and structure.<br>
+ ○ Example: DROP TABLE employees;
+
+<h3>● CREATEINDEX:</h3>
+ ○ Usedtocreate an index on one or more columns in a table.<br>
+ ○ Improves query performance by enabling faster data retrieval.<br>
+ ○ Example: CREATE INDEX idx_employee_name ON employees (name);
+
+
+ <h3>● DROPINDEX:</h3>
+ ○ Usedtoremove an existing index from a table.<br>
+ ○ Example: DROP INDEX idx_employee_name;<br>
+
+
+ <h3>● CREATECONSTRAINT:</h3>
+ ○ Usedtodefine constraints that ensure data integrity.<br>
+ ○ Constraints include PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL,
+ and CHECK.<br>
+ ○ Example: ALTER TABLE orders ADD CONSTRAINT fk_customer FOREIGN
+ KEY (customer_id) REFERENCES customers(id);
+
+
+ <h3>● DROPCONSTRAINT:</h3>
+ ○ Usedtoremove an existing constraint from a table.<br>
+ ○ Example: ALTER TABLE orders DROP CONSTRAINT fk_customer;<br>
+
+<h3> ● TRUNCATETABLE:</h3>
+ ○ Usedtodelete the data inside a table, but not the table itself.<br>
+ ○ Syntax– TRUNCATETABLEtable_name
+
 
  
