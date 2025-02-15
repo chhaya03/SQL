@@ -148,9 +148,8 @@ Eg - UNSIGNED INT
  indexes, constraints, and more.<br>
   Key DDL Commands are:
 
-<h3> ● CREATE TABLE:</h3>
- <ul>
-   ○ Usedtocreate a new table in the database.<br>
+ <h3> ● CREATE TABLE:</h3>
+ ○ Usedtocreate a new table in the database.<br>
  ○ Specifies the table name, column names, data types, constraints, and more.<br>
  ○ Example:CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
  salary DECIMAL(10, 2));
