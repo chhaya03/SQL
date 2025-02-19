@@ -154,16 +154,16 @@ Eg - UNSIGNED INT
  ○ Example:CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
  salary DECIMAL(10, 2));
 
- <h3> ● ALTERTABLE:</h3>
+ <h3> ● ALTER TABLE:</h3>
   ○ Used to modify the structure of an existing table.<br>
  ○ You can add, modify, or drop columns, constraints, and more.<br>
  ○ Example: ALTER TABLE employees ADD COLUMN email VARCHAR(100);<br>
 
- <h3>● DROPTABLE:</h3>
+ <h3>● DROP TABLE:</h3>
  ○ Used to delete an existing table along with its data and structure.<br>
  ○ Example: DROP TABLE employees;
 
-<h3>● CREATEINDEX:</h3>
+<h3>● CREATE INDEX:</h3>
  ○ Used to create an index on one or more columns in a table.<br>
  ○ Improves query performance by enabling faster data retrieval.<br>
  ○ Example: CREATE INDEX idx_employee_name ON employees (name);
@@ -361,4 +361,155 @@ COUNT(): Counts the number of rows in a group or result set.<br>
  SUM(): Calculates the sum of numeric values in a group or result set.<br>
  AVG():Computes the average of numeric values in a group or result set.<br>
  MAX():Finds the maximum value in a group or result set.<br>
- MIN():Retrieves the minimum value in a group or result set.<br>
+ MIN():Retrieves the minimum value in a group or result set.
+
+ <h2>3. DATA MANIPULATION LANGUAGE</h2>
+ Data Manipulation Language (DML) in SQL encompasses commands that manipulate data
+ within a database. DML allows you to insert, update, and delete records, ensuring the
+ accuracy and currency of your data.
+
+ <h3> ● INSERT:</h3>
+ --
+The INSERT statement adds new records to a table.<br>
+ Syntax: INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2,
+ ...);<br>
+ Example: INSERT INTO employees (first_name, last_name, salary) VALUES ('John',
+ 'Doe', 50000);
+
+<h3>  ● UPDATE:--</h3>
+The UPDATE statement modifies existing records in a table.<br>
+ Syntax: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE
+ condition;<br>
+ Example: UPDATE employees SET salary = 55000 WHERE first_name = 'John';
+ 
+ <h3>● DELETE:--</h3>
+The DELETE statement removes records from a table.<br>
+ Syntax: DELETE FROM table_name WHERE condition;<br>
+ Example: DELETE FROM employees WHERE last_name = 'Doe';
+
+ <h2>4. Data Control Language (DCL)</h2>
+ Data Control Language focuses on the management of access rights, permissions, and
+ security-related aspects of a database system.
+ DCL commands are used to control who can access the data, modify the data, or perform
+ administrative tasks within a database.
+ DCL is an important aspect of database security, ensuring that data remains protected and
+ only authorised users have the necessary privileges.
+ There are two main DCL commands in SQL: GRANT and REVOKE.
+
+ <h3>1. GRANT:</h3>
+ The GRANT command is used to provide specific privileges or permissions to users or roles.
+ Privileges can include the ability to perform various actions on tables, views, procedures,
+ and other database objects.
+
+ <h4>Syntax:</h4>
+ GRANTprivilege_type<br>
+ ONobject_name<br>
+ TO user_or_role;<br>
+
+ <h4>In this syntax:</h4>
+ ● privilege_type refers to the specific privilege or permission being granted (e.g.,
+ SELECT, INSERT, UPDATE, DELETE).<br>
+ ● object_name is the name of the database object (e.g., table, view) to which the
+ privilege is being granted.<br>
+ ● user_or_role is the name of the user or role that is being granted the privilege.<br>
+ Example: Granting SELECT privilege on a table named "Employees" to a user named
+ "Analyst":<br>
+ GRANTSELECTONEmployees TO Analyst;
+
+ <h3> 2. REVOKE:</h3>
+  The REVOKE command is used to remove or revoke specific privileges or permissions that
+ have been previously granted to users or roles.
+
+ <h4> Syntax:</h4>
+  REVOKE privilege_type<br>
+ ONobject_name<br>
+ FROMuser_or_role;
+
+ <h4> In this syntax:</h4>
+  ● privilege_type is the privilege or permission being revoked.<br>
+ ● object_name is the name of the database object from which the privilege is being
+ revoked.<br>
+ ● user_or_role is the name of the user or role from which the privilege is being
+ revoked.<br>
+ Example: Revoking the SELECT privilege on the "Employees" table from the "Analyst" user:<br>
+ REVOKE SELECT ONEmployees FROM Analyst;
+
+ <h1>DCL and Database Security:</h1>
+ DCL plays a crucial role in ensuring the security and integrity of a database system.
+ By controlling access and permissions, DCL helps prevent unauthorised users from
+ tampering with or accessing sensitive data. Proper use of GRANT and REVOKE commands
+ ensures that only users who require specific privileges can perform certain actions on
+ database objects.
+
+ <h2> 5. Transaction Control Language (TCL)</h2>
+  Transaction Control Language (TCL) deals with the management of transactions within a
+ database.
+ TCL commands are used to control the initiation, execution, and termination of transactions,
+ which are sequences of one or more SQL statements that are executed as a single unit of
+ work.
+ Transactions ensure data consistency, integrity, and reliability in a database by grouping
+ related operations together and either committing or rolling back changes based on the
+ success or failure of those operations.<br>
+
+  There are three main TCL commands in SQL: COMMIT, ROLLBACK, and SAVEPOINT.
+
+  <h3>1. COMMIT:</h3>
+  The COMMIT command is used to permanently save the changes made during a
+ transaction.<br>
+It makes all the changes applied to the database since the last COMMIT or ROLLBACK
+ command permanent.<br>
+ Once a COMMIT is executed, the transaction is considered successful, and the changes are
+ made permanent.<br>
+
+ Example: Committing changes made during a transaction:<br>
+  <h4>UPDATE Employees</h4>
+ SET Salary = Salary * 1.10<br>
+ WHEREDepartment = 'Sales';<br>
+ COMMIT
+ 
+ <h3>2. ROLLBACK:</h3>
+  The ROLLBACK command is used to undo changes made during a transaction.
+ It reverts all the changes applied to the database since the transaction began.<br>
+ ROLLBACK is typically used when an error occurs during the execution of a transaction,
+ ensuring that the database remains in a consistent state. <br>
+ Example: Rolling back changes due to an error during a transaction:<br>
+ BEGIN;<br>
+ 
+<h4> UPDATE Inventory</h4>
+ SET Quantity = Quantity- 10<br>
+ WHEREProductID = 101;-- An error occurs here<br>
+ ROLLBACK;
+
+ <h3>3. SAVEPOINT:</h3>
+  The SAVEPOINT command creates a named point within a transaction, allowing you to set a
+ point to which you can later ROLLBACK if needed.<br>
+ SAVEPOINTs are useful when you want to undo part of a transaction while preserving other
+ changes.<br>
+ Syntax: SAVEPOINT savepoint_name;<br>
+ Example: Using SAVEPOINT to create a point within a transaction:<br>
+ BEGIN;
+
+ <h4>UPDATE Accounts</h4>
+ SET Balance = Balance- 100<br>
+ WHEREAccountID = 123;<br>
+SAVEPOINT before_withdrawal;<br>
+
+
+<h4> UPDATE Accounts</h4>
+ SET Balance = Balance + 100<br>
+ WHEREAccountID = 456;<br>
+
+ -- An error occurs here
+
+  ROLLBACK TObefore_withdrawal;<br>
+  -- The first update is still applied<br>
+ COMMIT;
+
+<h1>TCL and Transaction Management:</h1>
+  Transaction Control Language (TCL) commands are vital for managing the integrity and
+ consistency of a database's data.
+ They allow you to group related changes into transactions, and in the event of errors, either
+ commit those changes or roll them back to maintain data integrity.
+ TCL commands are used in combination with Data Manipulation Language (DML) and other
+ SQL commands to ensure that the database remains in a reliable state despite unforeseen
+ errors or issues.
