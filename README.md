@@ -128,7 +128,7 @@ We can also use UNSIGNED with datatypes when we only have positive values to add
 Eg - UNSIGNED INT
 
 
-<h1>TypesofSQLCommands:
+<h1>Types of SQL Commands:
 </h1>
 1. DQL(Data Query Language) : Used to retrieve data from databases. (SELECT)<br>
  2. DDL(Data Definition Language) : Used to create, alter, and delete database objects
@@ -149,46 +149,216 @@ Eg - UNSIGNED INT
   Key DDL Commands are:
 
  <h3> ● CREATE TABLE:</h3>
- ○ Usedtocreate a new table in the database.<br>
+ ○ Used to create a new table in the database.<br>
  ○ Specifies the table name, column names, data types, constraints, and more.<br>
  ○ Example:CREATE TABLE employees (id INT PRIMARY KEY, name VARCHAR(50),
  salary DECIMAL(10, 2));
 
  <h3> ● ALTERTABLE:</h3>
-  ○ Usedtomodify the structure of an existing table.<br>
- ○ Youcanadd, modify, or drop columns, constraints, and more.<br>
+  ○ Used to modify the structure of an existing table.<br>
+ ○ You can add, modify, or drop columns, constraints, and more.<br>
  ○ Example: ALTER TABLE employees ADD COLUMN email VARCHAR(100);<br>
 
  <h3>● DROPTABLE:</h3>
- ○ Usedtodelete an existing table along with its data and structure.<br>
+ ○ Used to delete an existing table along with its data and structure.<br>
  ○ Example: DROP TABLE employees;
 
 <h3>● CREATEINDEX:</h3>
- ○ Usedtocreate an index on one or more columns in a table.<br>
+ ○ Used to create an index on one or more columns in a table.<br>
  ○ Improves query performance by enabling faster data retrieval.<br>
  ○ Example: CREATE INDEX idx_employee_name ON employees (name);
 
 
- <h3>● DROPINDEX:</h3>
- ○ Usedtoremove an existing index from a table.<br>
+ <h3>● DROP INDEX:</h3>
+ ○ Used to remove an existing index from a table.<br>
  ○ Example: DROP INDEX idx_employee_name;<br>
 
 
- <h3>● CREATECONSTRAINT:</h3>
- ○ Usedtodefine constraints that ensure data integrity.<br>
+ <h3>● CREATE CONSTRAINT:</h3>
+ ○ Used to define constraints that ensure data integrity.<br>
  ○ Constraints include PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL,
  and CHECK.<br>
  ○ Example: ALTER TABLE orders ADD CONSTRAINT fk_customer FOREIGN
  KEY (customer_id) REFERENCES customers(id);
 
 
- <h3>● DROPCONSTRAINT:</h3>
- ○ Usedtoremove an existing constraint from a table.<br>
+ <h3>● DROP CONSTRAINT:</h3>
+ ○ Used to remove an existing constraint from a table.<br>
  ○ Example: ALTER TABLE orders DROP CONSTRAINT fk_customer;<br>
 
-<h3> ● TRUNCATETABLE:</h3>
- ○ Usedtodelete the data inside a table, but not the table itself.<br>
+<h3> ● TRUNCATE TABLE:</h3>
+ ○ Used to delete the data inside a table, but not the table itself.<br>
  ○ Syntax– TRUNCATETABLEtable_name
 
 
+ <h2>2. DATA QUERY/RETRIEVAL LANGUAGE (DQL or DRL)</h2>
+  DQL (Data Query Language) is a subset of SQL focused on retrieving data from databases.
+ The SELECT statement is the foundation of DQL and allows us to extract specific columns
+ from a table.
+
+ <h3> ● SELECT:</h3>
+ The SELECT statement is used to select data from a database.<br>
+Syntax: SELECT column1, column2, ... FROM table_name;<br>
+ Here, column1, column2, ... are the field names of the table.
+ If you want to select all the fields available in the table, use the following syntax:
+ SELECT * FROMtable_name;<br>
+ Ex: SELECT CustomerName, City FROM Customers;
  
+<h3> ● WHERE:</h3>
+ The WHEREclause is used to filter records.<br>
+ Syntax: SELECT column1, column2, ... FROM table_name WHERE condition;<br>
+ Ex: SELECT * FROM Customers WHERE Country='Mexico';<br>
+<h4> Operators used in WHERE are:</h4>
+ = :Equal<br>
+ > :Greater than<br>
+ < :Less than <br>
+ >= : Greater than or equal<br>
+ <= : Less than or equal<br>
+ <> : Not equal.<br>
+ Note: In some versions of SQL this operator may be written as !=
+   
+<h3> ● AND,OR and NOT:</h3>
+The WHEREclause can be combined with AND, OR, and NOT operators.<br>
+ The AND and ORoperators are used to filter records based on more than one
+ condition:<br>
+ The AND operator displays a record if all the conditions separated by AND are
+ TRUE.<br>
+ The ORoperator displays a record if any of the conditions separated by OR is TRUE.<br>
+ The NOT operator displays a record if the condition(s) is NOT TRUE.<br>
+<h4> Syntax:</h4>
+SELECT column1, column2, ... FROM table_name WHERE condition1 AND condition2 AND
+ condition3 ...;<br>
+ SELECT column1, column2, ... FROM table_name WHERE condition1 OR condition2 OR
+ condition3 ...;<br>
+ SELECT column1, column2, ... FROM table_name WHERE NOT condition;
+ Example:<br>
+ SELECT * FROMCustomers WHERE Country=’India’ AND City=’Japan’;<br>
+ SELECT * FROMCustomers WHERE Country=’America’ AND (City=’India’ OR
+ City=’Korea’);
+   
+<h3> ● DISTINCT:</h3>
+ Removes duplicate rows from query results.<br>
+ Syntax: SELECT DISTINCT column1, column2 FROM table_name;
+ 
+<h3> ● LIKE:</h3>
+ The LIKE operator is used in a WHERE clause to search for a specified pattern in a column.<br>
+ There are two wildcards often used in conjunction with the LIKE operator:--<br>
+ The percent sign (%) represents zero, one, or multiple characters
+ The underscore sign (_) represents one, single character<br>
+ Example: SELECT * FROM employees WHERE first_name LIKE 'J%';<br>
+ WHERECustomerName LIKE 'a%'<br>
+Finds any values that start with "a"<br>
+ WHERECustomerName LIKE '%a'<br>
+Finds any values that end with "a"<br>
+ WHERECustomerName LIKE '%or%'<br>
+Finds any values that have "or" in any position<br>
+ WHERECustomerName LIKE '_r%'<br>
+Finds any values that have "r" in the second position<br>
+WHERECustomerName LIKE 'a_%'<br>
+Finds any values that start with "a" and are at least 2 characters in length<br>
+ WHERECustomerName LIKE 'a__%'<br>
+Finds any values that start with "a" and are at least 3 characters in length<br>
+ WHEREContactName LIKE 'a%o'<br>
+Finds any values that start with "a" and ends with "o"<br>
+
+<h3> ● IN:</h3>
+ Filters results based on a list of values in the WHERE clause.<br>
+ Example: SELECT * FROM products WHERE category_id IN (1, 2, 3);
+ 
+<h3> ● BETWEEN:</h3>
+ Filters results within a specified range in the WHERE clause.<br>
+ Example: SELECT * FROM orders WHERE order_date BETWEEN '2023-01-01' AND
+ '2023-06-30';
+ 
+<h3> ● IS NULL:</h3>
+ Checks for NULL values in the WHERE clause.<br>
+ Example: SELECT * FROM customers WHERE email IS NULL;
+ 
+<h3> ● AS:</h3>
+ Renames columns or expressions in query results.<br>
+ Example: SELECT first_name AS "First Name", last_name AS "Last Name" FROM
+ employees;
+ 
+<h3> ● ORDER BY</h3>
+ The ORDERBYclause allows you to sort the result set of a query based on one or more
+ columns.
+ 
+<h4> Basic Syntax:</h4>
+The ORDER BY clause is used after the SELECT statement to sort query results.
+Syntax:SELECT column1, column2 FROM table_name ORDER BY column1
+ [ASC|DESC];
+ <h4>
+ Ascending and Descending Order:---</h4>
+By default, the ORDER BY clause sorts in ascending order (smallest to largest).<br>
+ You can explicitly specify descending order using the DESC keyword.<br>
+ Example: SELECT product_name, price FROM products ORDER BY price DESC;
+ 
+<h4> Sorting by Multiple Columns:--</h4>
+You can sort by multiple columns by listing them sequentially in the ORDER BY
+ clause.<br>
+ Rows are first sorted based on the first column, and for rows with equal values,
+ subsequent columns are used for further sorting.<br>
+ Example: SELECT first_name, last_name FROM employees ORDER BY last_name,
+ first_name;
+ 
+ <h4>Sorting by Expressions:--</h4>
+ It's possible to sort by calculated expressions, not just column values.<br>
+ Example: SELECT product_name, price, price * 1.1 AS discounted_price FROM
+ products ORDER BY discounted_price;
+<h4> Sorting NULL Values:--</h4><br>
+By default, NULL values are considered the smallest in ascending order and the
+ largest in descending order.<br>
+ You can control the sorting behaviour of NULL values using the NULLS FIRST or
+ NULLS LAST options.<br>
+ Example: SELECT column_name FROM table_name ORDER BY column_name
+ NULLS LAST;
+ 
+ <h4>Sorting by Position:--</h4>
+ Instead of specifying column names, you can sort by column positions in the ORDER
+ BY clause.<br>
+ Example: SELECT product_name, price FROM products ORDER BY 2 DESC, 1
+ ASC;
+ 
+<h3> ● GROUP BY</h3>
+ The GROUPBYclause in SQL is used to group rows from a table based on one or more
+ columns.<br>
+ Syntax: The GROUPBYclause follows the SELECT statement and is used to group rows
+ based on specified columns.<br>
+Syntax: SELECT column1, aggregate_function(column2) FROM table_name
+ GROUPBYcolumn1; 
+ 
+<h4> Aggregation Functions:---</h4>
+ ○ Aggregation functions (e.g., COUNT, SUM, AVG, MAX, MIN) are often used
+ with GROUP BY to calculate values for each group.<br>
+ ○ Example: SELECT department, AVG(salary) FROM employees GROUP BY
+ department;<br>
+ 
+ <h4>Grouping by Multiple Columns:---</h4>
+ ○ Youcangroup by multiple columns by listing them in the GROUP BY clause.<br>
+ ○ Thiscreates a hierarchical grouping based on the specified columns.<br>
+ ○ Example: SELECT department, gender, AVG(salary) FROM employees
+ GROUPBYdepartment, gender;
+ 
+<h4> HAVING Clause:---</h4>
+ ○ TheHAVINGclause is used with GROUP BY to filter groups based on
+ aggregate function results.<br>
+ ○ It's similar to the WHERE clause but operates on grouped data.<br>
+ ○ Example: SELECT department, AVG(salary) FROM employees GROUP BY
+ department HAVING AVG(salary) > 50000;
+ 
+ <h4>Combining GROUP BY and ORDER BY:---</h4>
+ ○ Youcanuseboth GROUPBYandORDERBYinthesamequery to control
+ the order of grouped results.<br>
+ ○ Example: SELECT department, COUNT(*) FROM employees GROUP BY
+ department ORDER BY COUNT(*) DESC;
+ 
+<h3>● AGGREGATE FUNCTIONS</h3>
+ These are used to perform calculations on groups of rows or entire result sets. They provide
+ insights into data by summarising and processing information.<br>
+ 
+<h4> Common Aggregate Functions:--</h4>
+COUNT(): Counts the number of rows in a group or result set.<br>
+ SUM(): Calculates the sum of numeric values in a group or result set.<br>
+ AVG():Computes the average of numeric values in a group or result set.<br>
+ MAX():Finds the maximum value in a group or result set.<br>
+ MIN():Retrieves the minimum value in a group or result set.<br>
