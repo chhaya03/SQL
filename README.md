@@ -513,3 +513,102 @@ SAVEPOINT before_withdrawal;<br>
  TCL commands are used in combination with Data Manipulation Language (DML) and other
  SQL commands to ensure that the database remains in a reliable state despite unforeseen
  errors or issues.
+
+
+ <h1>JOINS</h1>
+  In a DBMS, a join is an operation that combines rows from two or more tables based on a
+ related column between them.<br>
+ Joins are used to retrieve data from multiple tables by linking them together using a common
+ key or column.
+
+ <h2> Types of Joins:
+</h2>
+1. Inner Join<br>
+ 2. Outer Join<br>
+ 3. Cross Join<br>
+ 4. Self Join<br>
+
+ <h2> 1) Inner Join</h2>
+  An inner join combines data from two or more tables based on a specified condition, known
+ as the join condition.<br>
+ The result of an inner join includes only the rows where the join condition is met in all
+ participating tables.<br>
+ It essentially filters out non-matching rows and returns only the rows that have matching
+ values in both tables.
+
+<h3> Syntax:</h3><br>
+ SELECT columns<br>
+ FROMtable1<br>
+ INNER JOIN table2<br>
+ ONtable1.column = table2.column;
+
+ <h3> Here:</h3>
+ ● columns refers to the specific columns you want to retrieve from the tables.<br>
+ ● table1 and table2 are the names of the tables you are joining.<br>
+ ● columnis the common column used to match rows between the tables.<br>
+ ● TheONclause specifies the join condition, where you define how the tables are
+ related.
+
+
+ <h2> 2) Outer Join</h2>
+  Outer joins combine data from two o rmore tables based on a specified condition, just like
+   inner joins.However,unlike inner joins,outer joins also include rows that do not have
+ matching values in both tables.
+  Outer joins are particularly useful when you want to include data from one table even if there
+ is no corresponding match in the other table.
+<h3>Types:</h3>
+
+<h3>1.Left Outer Join(LeftJoin):</h3>
+ A left outer join returns all the rows from the left table and the matching rows from the right
+ table.
+If there is no match in the right table, the result will still include the left table's row with NULL
+ values in the right table's columns.
+
+ 
+<h3> 2. Right Outer Join (Right Join):</h3>
+ 
+  A right outer join is similar to a left outer join, but it returns all rows from the right table and
+ the matching rows from the left table.<br>
+ If there is no match in the left table, the result will still include the right table's row with NULL
+ values in the left table's columns.
+
+ <h3> 3.Full Outer Join(FullJoin):</h3>
+  A full outer join returns all rows from both the left and right tables, including matches and
+ non-matches.<br>
+ If there's no match,NULL values appear in columns from the table where there's no
+ corresponding value
+
+
+ <h3> 3) Cross Join:</h3>
+  A cross join, also known as a Cartesian product, is a type of join operation in a Database
+ Management System (DBMS) that combines every row from one table with every row from
+ another table.<br>
+ Unlike other join types, a cross join does not require a specific condition to match rows
+ between the tables. Instead, it generates a result set that contains all possible combinations
+ of rows from both tables.<br>
+ Cross joins can lead to a large result set, especially when the participating tables have many
+ rows.
+
+ <h4> Syntax:</h4>
+  SELECT columns<br>
+ FROM table1<br>
+ CROSS JOIN table2;
+
+<h3> 4) Self Join:</h3>
+ A self join involves joining a table with itself.
+  This technique is useful when at able contains hierarchical or related data and you need to
+ compare or analyse rows within the same table.<br>
+ Self joins are commonly used to find relationships, hierarchies, or patterns within a single
+ table.<br>
+ In a self join, you treat the table as if it were two separate tables, referring to them with
+ different aliases.
+
+
+<h1>SET OPERATIONS</h1>
+
+ 
+ 
+  
+
+
+  
