@@ -605,10 +605,44 @@ If there is no match in the right table, the result will still include the left 
 
 
 <h1>SET OPERATIONS</h1>
-
+Set operations in SQL are used to combine or manipulate the result sets of multiple SELECT
+ queries.<br>
+ They allow you to perform operations similar to those in set theory, such as union,
+ intersection, and difference, on the data retrieved from different tables or queries.<br>
+ Set operations provide powerful tools for managing and manipulating data, enabling you to
+ analyse and combine information in various ways.<br>
  
+There are four primary set operations in SQL:
+   ● UNION<br>
+ ● INTERSECT<br>
+ ● EXCEPT (or MINUS)<br>
+ ● UNION ALL
+
+ <h3> 1. UNION:</h3>
+ The UNION operator combines the result sets of two or more SELECT queries into a single
+ result set.<br>
+ It removes duplicates by default, meaning that if there are identical rows in the result sets,
+ only one instance of each row will appear in the final result.<br>
+ 
+<h3> 2. INTERSECT:</h3>
+The INTERSECT operator returns the common rows that exist in the result sets of two or
+ more SELECT queries.<br>
+  It only returns distinct rows that appear in all result sets.
+
+<h3>3. EXCEPT (or MINUS):</h3>
+ The EXCEPT operator (also known as MINUS in some databases) returns the distinct rows
+ that are present in the result set of the first SELECT query but not in the result set of the
+ second SELECT query.
  
   
 
+ <h3> 4. UNION ALL:</h3>
+ The UNION ALL operator performs the same function as the UNION operator but does not
+ remove duplicates from the result set. It simply concatenates all rows from the different
+ result sets.
 
-  
+ <h1> Difference between Set Operations and Joins</h1>
+ 
+ 
+
+ 
