@@ -641,7 +641,9 @@ The INTERSECT operator returns the common rows that exist in the result sets of 
  remove duplicates from the result set. It simply concatenates all rows from the different
  result sets.
 
- <h1> Difference between Set Operations and Joins</h1>
+
+
+ 
  
  
 
